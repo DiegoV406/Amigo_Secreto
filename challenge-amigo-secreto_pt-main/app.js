@@ -28,7 +28,7 @@ function listarAmigos() {
 }
   
 function limparCampo(){
-    nomeAmigos = document.querySelector("input");
+  let nomeAmigos = document.querySelector("input");
     nomeAmigos.value = "";
 }
 
