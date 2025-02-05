@@ -7,39 +7,42 @@ const nome = document.querySelector('#amigo')
 
 function adicionarAmigo() {
   if (nome.value.trim().length <= 0) {
-    alert('Digite um nome valido no campo!')
-    return
+    alert('Digite um nome valido no campo!');
+    return;
   }
-  amigos.push(nome.value)
+  if(amigos.includes(nome.value)) {
+     alert("Esse nome ja foi adicionado");
+     document.querySelector("input").value = "";
+     return;
+  }
+  else{
+    amigos.push(nome.value);
+  }
 
-  listarAmigos()
-  limparCampo()
+  listarAmigos();
+  document.querySelector("input").value = "";
 }
 
 
 function listarAmigos() {
   lista.innerHTML = ''
   for (let i = 0; i < amigos.length; i++) {
-    let item = document.createElement("li")
-    let amigo = document.createTextNode(amigos[i])
-    item.appendChild(amigo)
-    lista.appendChild(item)
+    let item = document.createElement("li");
+    let amigo = document.createTextNode(amigos[i]);
+    item.appendChild(amigo);
+    lista.appendChild(item);
   }
 }
-  
-function limparCampo(){
-  let nomeAmigos = document.querySelector("input");
-    nomeAmigos.value = "";
-}
+
 
 function sortearAmigo() {
   if (amigos.length <= 0) {
-    alert('Adicione seus amigos para poder sortear!')
-    return
+    alert('Adicione seus amigos para poder sortear!');
+    return;
   }
 
-  let numero = Math.floor(Math.random() * amigos.length)
-  let amigosSorteado = amigos[numero]
-  resultado.innerHTML = ''
-  resultado.innerHTML = `<li>O amigo sorteado foi : ${amigosSorteado}</li>`
+  let numero = Math.floor(Math.random() * amigos.length);
+  let amigosSorteado = amigos[numero];
+  resultado.innerHTML = '';
+  resultado.innerHTML = `<li>O amigo sorteado foi : ${amigosSorteado}</li>`;
 }
