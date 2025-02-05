@@ -12,7 +12,7 @@ function adicionarAmigo() {
   }
   if(amigos.includes(nome.value)) {
      alert("Esse nome ja foi adicionado");
-     document.querySelector("input").value = "";
+     limparCampo()
      return;
   }
   else{
@@ -20,7 +20,7 @@ function adicionarAmigo() {
   }
 
   listarAmigos();
-  document.querySelector("input").value = "";
+  limparCampo()
 }
 
 
@@ -32,6 +32,11 @@ function listarAmigos() {
     item.appendChild(amigo);
     lista.appendChild(item);
   }
+}
+
+function limparCampo(){
+  let nomeAmigos = document.querySelector("input");
+      nomeAmigos.value = "";
 }
 
 
